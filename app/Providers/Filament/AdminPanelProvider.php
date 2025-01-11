@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Enums\RolesEnum;
+use Closure;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -14,6 +15,7 @@ use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
@@ -57,5 +59,10 @@ class AdminPanelProvider extends PanelProvider
             /*->authMiddleware([
                 Authenticate::class,
             ]);*/
+    }
+
+    public function boot()
+    {
+        Model::unguard();
     }
 }
