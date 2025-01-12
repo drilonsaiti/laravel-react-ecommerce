@@ -43,6 +43,12 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
+            'headers' => [
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers' => '*',
+                'Cross-Origin-Resource-Policy' => 'cross-origin',
+            ],
         ],
 
         's3' => [

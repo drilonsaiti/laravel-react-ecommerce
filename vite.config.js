@@ -11,4 +11,21 @@ export default defineConfig({
         }),
         react(),
     ],
+    server: {
+        proxy: {
+            '/api': 'http://localhost:8000',
+            '/storage': {
+                target: 'http://localhost:8000',
+                changeOrigin: true,
+            },
+            '/filament': {
+                target: 'http://localhost:8000',
+                changeOrigin: true,
+            },
+            '/_spatie': {
+                target: 'http://localhost:8000',
+                changeOrigin: true,
+            }
+        }
+    }
 });
